@@ -7,15 +7,38 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <h1>Inscription</h1>
-    <nav>
-      <a href="./index.html">Accueil</a>
-      <a href="./formulaire.html">S'inscrire</a>
-      <a href="./connection.html">Se connecter</a>
-      <a href="./profilutilisateur.html">Profil</a>
-      <a href="./jeu.html">Jouer</a>
-    </nav>
-    <div class="box"></div>
+    <header>
+      <h1>Memory Game</h1>
+      <nav>
+        <a href="./index.html">Accueil</a>
+        <a href="./formulaire.html">S'inscrire</a>
+        <a href="./connection.html">Se connecter</a>
+        <a href="./profilutilisateur.html">Profil</a>
+        <a href="./jeu.html">Jouer</a>
+      </nav>
+    </header>
+
+    <form class="formulaire" action="#" method="get">
+      <h2>Inscrivez-vous !</h2>
+      <label for="name">Nom d'utilisateur:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Entrez votre email :</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="password">Mot de passe :</label>
+      <input type="password" id="password" name="password" required />
+
+      <label for="confirm-password">Confirmez le mot de passe :</label>
+      <input
+        type="password"
+        id="confirm-password"
+        name="confirm-password"
+        required
+      />
+
+      <button type="submit">S'inscrire</button>
+    </form>
     <script src="./js/script.js"></script>
   </body>
 </html>

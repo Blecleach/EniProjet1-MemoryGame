@@ -2,7 +2,12 @@
   font-family: "Roboto";
   src: url(../assets/font/Roboto/Roboto-Regular.ttf);
 }
-
+body {
+  font-family: "Roboto", sans-serif;
+}
+h1 {
+  text-align: center;
+}
 nav {
   margin: auto;
   border: 2px solid rgba(66, 65, 65, 0.966);
@@ -11,22 +16,23 @@ nav {
   width: 90vw;
   margin-bottom: 1rem;
   padding: 1rem;
+  background-color: #13111163;
   display: flex;
   justify-content: space-between;
-  background-color: #13111163;
 }
 nav a {
   text-decoration: none;
+  color: #520303d3;
+  font-weight: bold;
 }
-.box {
-  font-family: "Roboto", sans-serif;
+.box,
+.formulaire {
   font-style: normal;
   height: 75vw;
   width: 90vw;
   max-width: 1000px;
-  /* max-height: 1000px; */
   background: #dddddd88;
-  margin: auto; /* Centre la boîte horizontalement */
+  margin: auto;
   margin-bottom: 10px;
   border: 2px solid rgba(66, 65, 65, 0.966);
   border-radius: 10px;
@@ -34,8 +40,69 @@ nav a {
   padding: 5px;
   text-align: center;
   line-height: 1.5;
-  /* overflow: auto; */
+  /* overflow: auto; je crois que c'est tricher */
 }
 .box img {
   width: 60vw;
+}
+.box ol {
+  text-align: left;
+}
+.formulaire {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+label {
+  margin-top: 1rem;
+}
+input {
+  padding: 10px;
+  border: 1px solid #242222;
+  border-radius: 4px;
+}
+/* Jeu */
+.grid {
+  height: 75vw;
+  width: 90vw;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.card {
+  width: 20vw;
+  height: 20vh;
+  margin: 5px;
+  position: relative;
+  /* transform: scale(1); pour garantir tailler d'origine, à voir si utile plus tard*/
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+.card:active {
+  transform: scale(0.97);
+  transition: transform 0.2s;
+}
+
+.card.flip {
+  transform: rotateY(180deg);
+}
+.card img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /*position,top, left pour que les back et front face se superposent au lieu de se décaler quand elles se retournent*/
+}
+.front-face {
+  transform: rotateY(180deg);
+}
+
+.back-face {
+  background: #3f92f16c;
 }
