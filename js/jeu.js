@@ -46,7 +46,7 @@ function unflipCards() {
     secondCard.classList.remove("flip");
 
     resetBoard();
-  }, 1000);
+  }, 500);
 }
 
 function resetBoard() {
@@ -61,19 +61,37 @@ function isVictory() {
 }
 function resetGame() {
   cards.forEach((card) => {
+    card.classList.add("no-transition");
     card.classList.remove("flip");
     card.addEventListener("click", flipCard);
   });
   resetBoard();
   shuffle();
 }
-(function shuffle() {
+function shuffle() {
   cards.forEach((card) => {
-    let randomCardPos = Math.floor(Math.random() * 12);
-    card.style.order = randomCardPos;
+    let randomPos = Math.floor(Math.random() * cards.length);
+    card.style.order = randomPos;
   });
-})();
-// raccourci barre d'espace
+}
+
+function resetGame() {
+  cards.forEach((card) => {
+    // vire les transitions
+    card.style.transition = "none";
+    card.classList.remove("flip");
+    card.addEventListener("click", flipCard);
+  });
+  resetBoard();
+  setTimeout(() => {
+    shuffle();
+    // remet les transitions
+    cards.forEach((card) => {
+      card.style.transition = "";
+    });
+  }, 100);
+}
+
 document.addEventListener("keydown", function (event) {
   if (event.code === "Space") {
     resetGame();

@@ -28,7 +28,7 @@ nav a {
 .box,
 .formulaire {
   font-style: normal;
-  height: 75vw;
+  /* height: 75vw; */
   width: 90vw;
   max-width: 1000px;
   background: #dddddd88;
@@ -53,6 +53,12 @@ nav a {
   justify-content: space-between;
   flex-direction: column;
 }
+.formulaire button {
+  margin-top: 1vh;
+  background-color: #d1541b36;
+  padding: 1vh;
+  border: 2px solid #242222;
+}
 label {
   margin-top: 1rem;
 }
@@ -67,7 +73,7 @@ input {
   width: 90vw;
   display: flex;
   flex-wrap: wrap;
-  perspective: 1000px;
+  /* perspective: 1000px; */
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -89,6 +95,7 @@ input {
 .card.flip {
   transform: rotateY(180deg);
 }
+
 .card img {
   width: 100%;
   height: 100%;
