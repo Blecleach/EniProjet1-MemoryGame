@@ -40,7 +40,7 @@ nav a {
   padding: 5px;
   text-align: center;
   line-height: 1.5;
-  /* overflow: auto; je crois que c'est tricher */
+  /* overflow: auto; Thierry a dit que c'est pas bien de faire ça :( */
 }
 .box img {
   width: 60vw;
@@ -97,7 +97,6 @@ input {
   position: absolute;
   top: 0;
   left: 0;
-  /*position,top, left pour que les back et front face se superposent au lieu de se décaler quand elles se retournent*/
 }
 .front-face {
   transform: rotateY(180deg);
@@ -105,4 +104,12 @@ input {
 
 .back-face {
   background: #3f92f16c;
+}
+/* fin jeu*/
+.error {
+  color: #be0a0ae8;
+  text-align: left;
+
+  font-size: small;
+  /* margin-top: 5px; */
 }

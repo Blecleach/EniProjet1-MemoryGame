@@ -7,7 +7,7 @@ let firstCard, secondCard;
 
 function flipCard() {
   if (lockBoard) return;
-  if (this === firstCard) return;
+  //   if (this === firstCard) return;
 
   this.classList.add("flip");
 
@@ -16,18 +16,18 @@ function flipCard() {
     firstCard = this;
     return;
   }
-
   hasFlippedCard = false;
   secondCard = this;
 
   checkForMatch();
+  isVictory();
 }
 
 function checkForMatch() {
   let isMatch =
     firstCard.querySelector(".front-face").src ===
     secondCard.querySelector(".front-face").src;
-
+  // carte "désactivées" si c'est un match, sinon unflip
   isMatch ? disableCards() : unflipCards();
 }
 
@@ -53,12 +53,30 @@ function resetBoard() {
   [hasFlippedCard, lockBoard] = [false, false];
   [firstCard, secondCard] = [null, null];
 }
-
+function isVictory() {
+  const flippedCards = document.querySelectorAll(".card.flip");
+  if (flippedCards.length === cards.length) {
+    alert("Bravo !");
+  }
+}
+function resetGame() {
+  cards.forEach((card) => {
+    card.classList.remove("flip");
+    card.addEventListener("click", flipCard);
+  });
+  resetBoard();
+  shuffle();
+}
 (function shuffle() {
   cards.forEach((card) => {
-    let randomPos = Math.floor(Math.random() * 12);
-    card.style.order = randomPos;
+    let randomCardPos = Math.floor(Math.random() * 12);
+    card.style.order = randomCardPos;
   });
 })();
-
+// raccourci barre d'espace
+document.addEventListener("keydown", function (event) {
+  if (event.code === "Space") {
+    resetGame();
+  }
+});
 cards.forEach((card) => card.addEventListener("click", flipCard));
