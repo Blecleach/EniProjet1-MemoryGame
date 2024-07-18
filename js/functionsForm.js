@@ -34,3 +34,15 @@ export function evaluatePasswordStrength(password) {
   return { score: score * 25, text: text };
 }
 
+export function updateStrengthBar(score, strengthBar) {
+  strengthBar.style.width = score + "%";
+  if (score < 50) strengthBar.style.backgroundColor = "red";
+  else if (score < 75) strengthBar.style.backgroundColor = "orange";
+  else strengthBar.style.backgroundColor = "green";
+}
+
+export function saveUser(username, email, password) {
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  users.push({ username: username, email: email, password: password });
+  localStorage.setItem("users", JSON.stringify(users));
+}

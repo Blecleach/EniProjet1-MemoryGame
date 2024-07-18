@@ -3,7 +3,7 @@ console.log("coucou");
 const cards = document.querySelectorAll(".card");
 let hasFlippedCard = false;
 let lockBoard = false;
-let firstCard, secondCard
+let firstCard, secondCard;
 // système de score à taffer
 // let score = 0;
 // const scoreDisplay = document.getElementById('score');
@@ -11,7 +11,6 @@ let firstCard, secondCard
 
 function flipCard() {
   if (lockBoard) return;
-  //   if (this === firstCard) return;
 
   this.classList.add("flip");
 
@@ -20,6 +19,7 @@ function flipCard() {
     firstCard = this;
     return;
   }
+
   hasFlippedCard = false;
   secondCard = this;
 
@@ -27,12 +27,11 @@ function flipCard() {
   isVictory();
 }
 
-
 function checkForMatch() {
   let isMatch =
     firstCard.querySelector(".front-face").src ===
     secondCard.querySelector(".front-face").src;
-  // carte "désactivées" si c'est un match, sinon unflip
+  // : vaut "sinon"
   isMatch ? disableCards() : unflipCards();
 }
 
@@ -40,7 +39,7 @@ function disableCards() {
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
 
-  resetBoard();
+  // resetBoard(); pas nécessaire puisque les cartes désactivées, donc identiques, ne peuvent plus être retournées
 }
 
 function unflipCards() {
@@ -58,12 +57,14 @@ function resetBoard() {
   [hasFlippedCard, lockBoard] = [false, false];
   [firstCard, secondCard] = [null, null];
 }
+
 function isVictory() {
   const flippedCards = document.querySelectorAll(".card.flip");
   if (flippedCards.length === cards.length) {
     alert("Facile !");
   }
 }
+
 function resetGame() {
   cards.forEach((card) => {
     card.classList.add("no-transition");
@@ -73,6 +74,7 @@ function resetGame() {
   resetBoard();
   shuffle();
 }
+
 function shuffle() {
   cards.forEach((card) => {
     let randomPos = Math.floor(Math.random() * cards.length);

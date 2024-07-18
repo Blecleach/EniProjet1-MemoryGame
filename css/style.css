@@ -5,6 +5,9 @@
 
 body {
   font-family: "Roboto", sans-serif;
+  overflow: hidden;
+  position: relative;
+  background-color: #00000036;
 }
 
 h1 {
@@ -15,7 +18,7 @@ nav {
   width: 90vw;
   max-width: 900px;
   margin: auto;
-  border: 2px solid rgba(66, 65, 65, 0.966);
+  border: 2px solid rgba(58, 58, 58, 0.966);
   border-radius: 10px;
   box-shadow: 3px 3px 0 #00000036;
   margin-bottom: 1rem;
@@ -27,20 +30,25 @@ nav {
 
 nav a {
   text-decoration: none;
-  color: #680404b7;
+  color: #ffffff;
   font-weight: bold;
+  text-shadow: 1px 1px 2px black;
+}
+nav a:hover{
+transform: scale(1.05);
 }
 nav a:active {
   transform: scale(0.7); /* Réduire légèrement la taille du bouton */
   transition: transform 0.75s ease; /* Animation fluide */
 }
+
 .box,
 .formulaire,
 .boxLogin {
   font-style: normal;
   width: 90vw;
   max-width: 750px;
-  background: #dddddd88;
+  background: #d4d3d35e;
   margin: auto;
   margin-bottom: 10px;
   border: 2px solid rgba(66, 65, 65, 0.966);
@@ -139,9 +147,20 @@ input {
 }
 
 .back-face {
-  background: #3f92f16c;
+  /* background: #3f92f16c; */
+}
+.falling-image {
+  position: absolute;
+  top: -50px; /* Commencez au-dessus de l'écran */
+  left: calc(100vw * var(--random-x)); /* Position aléatoire sur l'axe X */
+  animation: fall 5s linear infinite; /* Animation de chute */
 }
 
+@keyframes fall {
+  to {
+    top: 100vh; /* Finit en bas de l'écran */
+  }
+}
 /* Fin jeu */
 
 /* Formulaire*/
@@ -150,17 +169,20 @@ input {
   justify-content: space-between;
   flex-direction: column;
 }
+
 button {
   margin-top: 2vh;
   background-color: #d1541b36;
   padding: 1vh;
   border: 2px solid #242222;
   font-weight: bold;
-  }
-  button:active{
+}
+
+button:active {
   transform: scale(0.95);
-  transition: transform 0.2s ease; 
-  }
+  transition: transform 0.2s ease;
+}
+
 .error {
   color: #be0a0ae8;
   text-align: left;

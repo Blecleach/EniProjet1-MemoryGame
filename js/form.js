@@ -3,7 +3,10 @@ import {
   validateEmail,
   validatePassword,
   evaluatePasswordStrength,
+  updateStrengthBar,
+  saveUser,
 } from "./functionsForm.js";
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector(".formulaire");
@@ -13,13 +16,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const confirmPassword = document.getElementById("confirm-password");
   const cancelButton = document.getElementById("cancel-button");
 
-  // Aide pour le mot de passe
+
   const passwordHelp = document.createElement("div");
   passwordHelp.className = "password-help";
   password.parentNode.insertBefore(passwordHelp, password.nextSibling);
 
   const strengthBarContainer = document.createElement("div");
   strengthBarContainer.id = "password-strength";
+
   const strengthBar = document.createElement("div");
   strengthBar.id = "strength-bar";
   strengthBarContainer.appendChild(strengthBar);
@@ -31,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
   password.addEventListener("input", function () {
     const strength = evaluatePasswordStrength(password.value);
     passwordHelp.textContent = `Niveau de sécurité du mot de passe : ${strength.text}`;
-    updateStrengthBar(strength.score);
+    updateStrengthBar(strength.score, strengthBar);
   });
 
   // Gestion de la soumission du formulaire
@@ -39,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
     let valid = true;
 
-    // Réinitialisation des messages d'erreur
+    // reini error messages
     document.querySelectorAll(".error").forEach((el) => el.remove());
 
     if (username.value.length < 3) {
@@ -54,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
       valid = false;
       showError(email, "Veuillez entrer une adresse email valide.");
     } else {
-      // Vérification asynchrone si l'email est déjà utilisé
+      // verif asynchrone si l'email est déjà utilisé
       const emailExists = await checkEmailExists(email.value);
       if (emailExists) {
         valid = false;
@@ -62,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    // Validation du mot de passe
+   
     if (!validatePassword(password.value)) {
       valid = false;
       showError(
@@ -71,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     }
 
-    // Validation de la confirmation du mot de passe
+ 
     if (password.value !== confirmPassword.value) {
       valid = false;
       showError(
@@ -98,19 +102,6 @@ document.addEventListener("DOMContentLoaded", function () {
     cancelButton.addEventListener("click", function () {
       window.location.href = "index.html";
     });
-  }
-
-  function updateStrengthBar(score) {
-    strengthBar.style.width = score + "%";
-    if (score < 50) strengthBar.style.backgroundColor = "red";
-    else if (score < 75) strengthBar.style.backgroundColor = "orange";
-    else strengthBar.style.backgroundColor = "green";
-  }
-
-  function saveUser(username, email, password) {
-    let users = JSON.parse(localStorage.getItem("users")) || [];
-    users.push({ username: username, email: email, password: password });
-    localStorage.setItem("users", JSON.stringify(users));
   }
 
   // Fonction asynchrone pour vérifier si l'email est déjà utilisé
