@@ -70,11 +70,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
   }
-  // règle concernant le mdp assouplie une foie que l'information sur la force est fournie à l'utilisateur
+  // règle assouplie
   function validatePassword(password) {
     return password.length >= 6;
   }
-  // fonction pour force du mdp
+  // force du mdp
   function evaluatePasswordStrength(password) {
     if (password.length < 6) {
       return "Faible";
