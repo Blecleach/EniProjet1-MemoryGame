@@ -3,7 +3,11 @@ console.log("coucou");
 const cards = document.querySelectorAll(".card");
 let hasFlippedCard = false;
 let lockBoard = false;
-let firstCard, secondCard;
+let firstCard, secondCard
+// système de score à taffer
+// let score = 0;
+// const scoreDisplay = document.getElementById('score');
+// scoreDisplay.textContent = `Score: ${score}`;
 
 function flipCard() {
   if (lockBoard) return;
@@ -22,6 +26,7 @@ function flipCard() {
   checkForMatch();
   isVictory();
 }
+
 
 function checkForMatch() {
   let isMatch =
@@ -56,7 +61,7 @@ function resetBoard() {
 function isVictory() {
   const flippedCards = document.querySelectorAll(".card.flip");
   if (flippedCards.length === cards.length) {
-    alert("Bravo !");
+    alert("Facile !");
   }
 }
 function resetGame() {

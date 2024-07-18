@@ -2,12 +2,15 @@
   font-family: "Roboto";
   src: url(../assets/font/Roboto/Roboto-Regular.ttf);
 }
+
 body {
   font-family: "Roboto", sans-serif;
 }
+
 h1 {
   text-align: center;
 }
+
 nav {
   width: 90vw;
   max-width: 900px;
@@ -15,22 +18,26 @@ nav {
   border: 2px solid rgba(66, 65, 65, 0.966);
   border-radius: 10px;
   box-shadow: 3px 3px 0 #00000036;
-
   margin-bottom: 1rem;
   padding: 1rem;
   background-color: #13111163;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
+
 nav a {
   text-decoration: none;
   color: #680404b7;
   font-weight: bold;
 }
+nav a:active {
+  transform: scale(0.7); /* Réduire légèrement la taille du bouton */
+  transition: transform 0.75s ease; /* Animation fluide */
+}
 .box,
-.formulaire {
+.formulaire,
+.boxLogin {
   font-style: normal;
-  /* height: 75vw; */
   width: 90vw;
   max-width: 750px;
   background: #dddddd88;
@@ -42,42 +49,55 @@ nav a {
   padding: 5px;
   text-align: center;
   line-height: 1.5;
-  /* overflow: auto; Thierry a dit que c'est pas bien de faire ça :( */
 }
+
 .box img {
   max-width: 700px;
 }
+
 .box ol {
   text-align: left;
 }
 
 label {
-  margin-top: 3vh;
+  margin-top: 2vh;
+  font-weight: bold;
 }
+
 input {
+  margin-top: 2vh;
   padding: 10px;
   border: 1px solid #242222;
   border-radius: 4px;
 }
+
+/* Barre de force du mot de passe */
+#password-strength {
+  width: 100%;
+  height: 10px;
+  margin-top: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+}
+
+#strength-bar {
+  height: 100%;
+  width: 0;
+  border-radius: 5px;
+  transition: width 0.3s ease-in-out;
+}
+
 /* Jeu */
 .grid {
-  /* height: 75vw; */
   width: 90vw;
   max-width: 750px;
-  display: flex;
-  flex-wrap: wrap;
-  /* perspective: 10000px; */
-  /* display: flex;
-  justify-content: space-between;
-  flex-direction: column; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 10px;
 }
+
 .card {
-  /* width: 20vw;
-  height: 20vh; */
   margin: 5px;
   position: relative;
   padding-bottom: 100%;
@@ -87,6 +107,13 @@ input {
   border-radius: 10px;
   box-shadow: 4px 3px 0 #00000036;
 }
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 5px 5px 0 #00000036;
+  cursor: pointer;
+}
+
 .card:active {
   transform: scale(0.97);
   transition: transform 0.2s;
@@ -106,6 +133,7 @@ input {
   top: 0;
   left: 0;
 }
+
 .front-face {
   transform: rotateY(180deg);
 }
@@ -113,28 +141,28 @@ input {
 .back-face {
   background: #3f92f16c;
 }
-/* fin jeu*/
+
+/* Fin jeu */
+
+/* Formulaire*/
 .formulaire {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 }
-.formulaire button {
+button {
   margin-top: 2vh;
   background-color: #d1541b36;
   padding: 1vh;
   border: 2px solid #242222;
   font-weight: bold;
-}
+  }
+  button:active{
+  transform: scale(0.95);
+  transition: transform 0.2s ease; 
+  }
 .error {
   color: #be0a0ae8;
   text-align: left;
   font-size: small;
-}
-#strength-bar {
-  height: 100%;
-  width: 0;
-  background-color: red;
-  border-radius: 5px;
-  transition: width 0.3s ease-in-out;
 }

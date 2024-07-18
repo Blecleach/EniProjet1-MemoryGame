@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>S'inscrire</title>
+    <title>Inscritpion</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="shortcut icon" href="./assets/nerd.png" />
   </head>
   <body>
     <header>
@@ -18,7 +19,7 @@
       </nav>
     </header>
 
-    <form class="formulaire" action="#" method="post">
+    <form class="formulaire" method="post">
       <h2>Inscrivez-vous !</h2>
       <label for="name">Nom d'utilisateur:</label>
       <input type="text" id="name" name="name" required />
@@ -28,9 +29,6 @@
 
       <label for="password">Mot de passe :</label>
       <input type="password" id="password" name="password" required />
-      <div id="password-strength">
-        <div id="strength-bar"></div>
-      </div>
 
       <label for="confirm-password">Confirmez le mot de passe :</label>
       <input
@@ -41,7 +39,8 @@
       />
 
       <button type="submit">S'inscrire</button>
+      <input type="button" id="cancel-button" value="Annuler" />
     </form>
-    <script src="./js/form.js"></script>
+    <script type="module" src="./js/form.js"></script>
   </body>
 </html>
