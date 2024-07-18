@@ -4,10 +4,8 @@ const cards = document.querySelectorAll(".card");
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
-// système de score à taffer
-// let score = 0;
-// const scoreDisplay = document.getElementById('score');
-// scoreDisplay.textContent = `Score: ${score}`;
+let attempts = 0;
+const attemptsDisplay = document.getElementById("attempts");
 
 function flipCard() {
   if (lockBoard) return;
@@ -22,6 +20,9 @@ function flipCard() {
 
   hasFlippedCard = false;
   secondCard = this;
+
+  attempts++;
+  attemptsDisplay.textContent = `${attempts}`;
 
   checkForMatch();
   isVictory();

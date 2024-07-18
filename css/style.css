@@ -34,8 +34,8 @@ nav a {
   font-weight: bold;
   text-shadow: 1px 1px 2px black;
 }
-nav a:hover{
-transform: scale(1.05);
+nav a:hover {
+  transform: scale(1.05);
 }
 nav a:active {
   transform: scale(0.7); /* Réduire légèrement la taille du bouton */
@@ -149,18 +149,6 @@ input {
 .back-face {
   /* background: #3f92f16c; */
 }
-.falling-image {
-  position: absolute;
-  top: -50px; /* Commencez au-dessus de l'écran */
-  left: calc(100vw * var(--random-x)); /* Position aléatoire sur l'axe X */
-  animation: fall 5s linear infinite; /* Animation de chute */
-}
-
-@keyframes fall {
-  to {
-    top: 100vh; /* Finit en bas de l'écran */
-  }
-}
 /* Fin jeu */
 
 /* Formulaire*/
@@ -172,12 +160,18 @@ input {
 
 button {
   margin-top: 2vh;
-  background-color: #d1541b36;
+  background-color: #ebe4e336;
   padding: 1vh;
   border: 2px solid #242222;
   font-weight: bold;
+  width: 40vh;
+  align-self: center;
 }
 
+.cancelButton {
+  background-color: #9b0808e3;
+  margin-bottom: 2vh;
+}
 button:active {
   transform: scale(0.95);
   transition: transform 0.2s ease;
@@ -187,4 +181,15 @@ button:active {
   color: #be0a0ae8;
   text-align: left;
   font-size: small;
+}
+@media (max-width: 380px) {
+  button {
+    width: 90%;
+  }
+}
+@media (max-width: 350px) {
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }

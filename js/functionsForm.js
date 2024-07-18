@@ -43,6 +43,12 @@ export function updateStrengthBar(score, strengthBar) {
 
 export function saveUser(username, email, password) {
   let users = JSON.parse(localStorage.getItem("users")) || [];
-  users.push({ username: username, email: email, password: password });
+  users.push({ username, email, password });
   localStorage.setItem("users", JSON.stringify(users));
+}
+
+export async function checkEmailExists(email) {
+  const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+  const foundUser = existingUsers.find((user) => user.email === email);
+  return foundUser ? true : false;
 }
