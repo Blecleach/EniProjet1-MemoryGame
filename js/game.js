@@ -9,6 +9,7 @@ const attemptsDisplay = document.getElementById("attempts");
 
 function flipCard() {
   if (lockBoard) return;
+  if (this === firstCard) return;
 
   this.classList.add("flip");
 
@@ -32,7 +33,7 @@ function checkForMatch() {
   let isMatch =
     firstCard.querySelector(".front-face").src ===
     secondCard.querySelector(".front-face").src;
-  // : vaut "sinon"
+
   isMatch ? disableCards() : unflipCards();
 }
 
@@ -40,7 +41,7 @@ function disableCards() {
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
 
-  // resetBoard(); pas nécessaire puisque les cartes désactivées, donc identiques, ne peuvent plus être retournées
+  resetBoard();
 }
 
 function unflipCards() {
