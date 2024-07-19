@@ -41,7 +41,6 @@ function disableCards() {
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
 
-  resetBoard();
 }
 
 function unflipCards() {
@@ -65,16 +64,6 @@ function isVictory() {
   if (flippedCards.length === cards.length) {
     alert("Facile !");
   }
-}
-
-function resetGame() {
-  cards.forEach((card) => {
-    card.classList.add("no-transition");
-    card.classList.remove("flip");
-    card.addEventListener("click", flipCard);
-  });
-  resetBoard();
-  shuffle();
 }
 
 function shuffle() {

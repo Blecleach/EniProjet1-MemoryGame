@@ -79,7 +79,6 @@ input {
   border-radius: 4px;
 }
 
-/* Barre de force du mot de passe */
 #password-strength {
   width: 100%;
   height: 10px;
